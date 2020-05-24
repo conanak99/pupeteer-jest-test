@@ -9,7 +9,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "jest": "^22.0.4",
+        "jest": "^26.0.1",
         "puppeteer": "git+https://github.com/GoogleChrome/puppeteer.git"
     }
 }

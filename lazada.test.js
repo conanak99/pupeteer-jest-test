@@ -5,7 +5,7 @@ let page = null;
 describe('Lazada test', () => {
 
     beforeAll(async() => {
-        browser = await puppeteer.launch();
+        browser = await puppeteer.launch({headless: false});
         page = await browser.newPage();
         await page.setViewport({
             width: 1280,
@@ -37,19 +37,4 @@ describe('Lazada test', () => {
         }
     });
 
-    test('Install app', async() => {
-        expect.assertions(1);
-        try {
-            const appDownloadLink = await page.xpath('//*[@id="topActionDownload"]');
-            await appDownloadLink.click();
-
-            await page.waitForNavigation();
-            const breadCrumbHandle = await page.xpath('/html/body/header/footer/div[2]/div[1]/ul/li[2]/span');
-            const text = await page.evaluate(element => element.innerText, breadCrumbHandle);
-
-            expect(text).toContain('App Mobile tại Lazada');
-        } catch (error) {
-            console.log(error);
-        }
-    });
 })
